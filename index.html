@@ -1,1 +1,96 @@
-<link rel="stylesheet" href="main.css">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FrameDrop</title>
+    <link rel="stylesheet" href="tailwind-output.css" />
+    <style>
+      /* Smooth transition for nav menu */
+      .nav-transition {
+        transition: max-height 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Logo and Name -->
+        <div class="flex items-center gap-3">
+          <img src="./images/gpu logo no bg.png" alt="FrameDrop Logo" class="w-10 h-10 object-contain" />
+          <h1 class="text-2xl font-bold text-orange-500">FrameDrop</h1>
+        </div>
+
+        <!-- Hamburger Button (mobile only) -->
+        <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+          &#9776;   <!-- hamburger icon-->
+        </button>
+
+        <!-- Nav Links (desktop) -->
+        <ul class="hidden md:flex gap-8 text-gray-700 font-medium text-base">
+          <li><a href="#" class="hover:text-orange-500">Latest News</a></li>
+          <li><a href="#" class="hover:text-green-500">Nvidia</a></li>
+          <li><a href="#" class="hover:text-red-500">AMD</a></li>
+          <li><a href="#" class="hover:text-blue-500">Intel</a></li>
+          <li><a href="#" class="hover:text-orange-500">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 nav-transition bg-white">
+        <ul class="flex flex-col px-4 py-2 gap-4 text-gray-700 font-medium text-base">
+          <li><a href="#" class="hover:text-orange-500">Latest News</a></li>
+          <li><a href="#" class="hover:text-green-500">Nvidia</a></li>
+          <li><a href="#" class="hover:text-red-500">AMD</a></li>
+          <li><a href="#" class="hover:text-blue-500">Intel</a></li>
+          <li><a href="#" class="hover:text-orange-500">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- JavaScript for menu -->
+    <script>
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+
+      btn.addEventListener('click', () => 
+      {
+        if (menu.classList.contains('max-h-0')) 
+        {
+          menu.classList.remove('max-h-0');
+          menu.classList.add('max-h-96');
+        } 
+        else 
+        {
+          menu.classList.remove('max-h-96');
+          menu.classList.add('max-h-0');
+        }
+      });
+    </script>
+
+    <!-- Main Content -->
+    <div>
+        <!-- Articles Section-->
+        <article></article>
+        <!-- Sidebar-->
+        <aside></aside>
+    </div>
+
+
+    <!-- Footer-->
+    <footer></footer>
+</body>
+
+</html>
+
+<!-- JavaScript for toggle -->
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('nav-links');
+        menu.classList.toggle('hidden');
+    }
+</script>
