@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FrameDrop</title>
     <link rel="stylesheet" href="tailwind-output.css" />
-
+    
     <!-- Browser tab icon-->
     <link rel="icon" href="/images/gpu logo no bg.png" type="image/png" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         /* Smooth transition for nav menu */
         .nav-transition {
             transition: max-height 0.3s ease-in-out;
         }
-    </style>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            lucide.createIcons();
-        });
-    </script>
+        #toast.show {
+            display: block;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeout {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
@@ -30,7 +39,7 @@
     <!-- Navbar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
-
+            
             <!-- Logo and Name -->
             <div class="flex items-center gap-3">
                 <img src="./images/gpu logo no bg.png" alt="FrameDrop Logo" class="w-10 h-10 object-contain" />
@@ -39,7 +48,7 @@
 
             <!-- Hamburger Button (mobile only) -->
             <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
-                &#9776; <!-- hamburger icon-->
+                &#9776; <!-- hamburger icon--> 
             </button>
 
             <!-- Nav Links (desktop) -->
@@ -64,199 +73,101 @@
         </div>
     </nav>
 
-    <!-- JavaScript for menu -->
-    <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            if (menu.classList.contains('max-h-0')) {
-                menu.classList.remove('max-h-0');
-                menu.classList.add('max-h-96');
-            }
-            else {
-                menu.classList.remove('max-h-96');
-                menu.classList.add('max-h-0');
-            }
-        });
-    </script>
-
     <!-- Main Layout -->
     <div class="max-w-screen-xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <!-- Article Section -->
-        <article class="md:col-span-2 space-y-6">
-
-            <!-- Article 1 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="./images/RX 9070 XT.webp" alt="9070" class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        AMD’s RX 9070 XT $600 MSRP—But Only in the U.S.
-                    </a>
-                    <p class="text-gray-700">AMD's new GPU is priced at $600—but that sweet MSRP seems exclusive to the
-                        U.S. Global buyers are seeing inflated prices with little explanation.</p>
-                </div>
-            </div>
-
-            <!-- Article 2 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="./images/RTX 5090.jpg" alt="5090" class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        NVIDIA GPUs Shipped with Missing ROPs
-                    </a>
-                    <p class="text-gray-700">It’s been confirmed—some NVIDIA graphics cards were released with fewer
-                        Render Output Units (ROPs) than advertised. The discovery sparked backlash as gamers realized
-                        their cards weren't delivering expected performance.</p>
-                </div>
-            </div>
-
-            <!-- Article 3 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="images/RTX 5090 Meltdown.png" alt="Meltdown"
-                    class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        RTX 5090 Power Connector Meltdown
-                    </a>
-                    <p class="text-gray-700">The RTX 5090 launched with serious heat—literally. Users reported melting
-                        power connectors shortly after release, reigniting concerns over NVIDIA’s power delivery design.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Article 4 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="./images/Scalper2.jpg" alt="Scalpers" class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        Scalpers Still Milking the GPU Market Dry
-                    </a>
-                    <p class="text-gray-700">Despite new launches, scalpers are still snatching GPUs and flipping them
-                        for double the price. These bottom-feeders continue to exploit demand, leaving real gamers stuck
-                        paying a premium—or going without.</p>
-                </div>
-            </div>
-
-            <!-- Article 5 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="./images/Nvidia-5000-Series.webp" alt="5000 Series"
-                    class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        NVIDIA’s Paper Launch Problem
-                    </a>
-                    <p class="text-gray-700">Yet another GPU launch with no actual stock? NVIDIA faces backlash over
-                        "paper launches" that hype new cards without real availability.</p>
-                </div>
-            </div>
-
-            <!-- Article 6 -->
-            <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
-                <img src="./images/B580.jpg" alt="B580" class="w-full md:w-48 h-auto object-cover rounded" />
-                <div>
-                    <a href="#"
-                        class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
-                        Intel Stuck in the GPU Slow Lane
-                    </a>
-                    <p class="text-gray-700">Despite big promises, Intel's discrete GPU efforts remain far behind
-                        rivals. With performance and driver issues, they're still struggling to compete.</p>
-                </div>
-            </div>
+        <!-- Articles -->
+        <article class="md:col-span-2 space-y-6" id="article-list">
+            <!-- JavaScript will inject articles here -->
         </article>
 
-        <!-- Sidebar-->
+        <!-- Sidebar -->
         <div class="space-y-6 self-start">
 
-            <!-- image and title -->
+            <!-- Create New Article -->
+            <aside class="bg-white p-4 rounded shadow-md mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Create New Article</h2>
+                <form id="articleForm" class="space-y-4">
+                    <input type="text" id="title" placeholder="Title" required class="w-full p-2 border rounded" />
+                    <textarea id="content" placeholder="Content" required class="w-full p-2 border rounded"></textarea>
+                    <input type="text" id="image" placeholder="Image URL" required class="w-full p-2 border rounded" />
+                    <button type="submit" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Add Article</button>
+                </form>
+            </aside>
+
+            <!-- Recent Posts -->
             <aside class="bg-white p-4 rounded-lg shadow-md space-y-4">
                 <h3 class="text-lg font-bold text-orange-500">Recent Posts</h3>
                 <ul class="grid gap-4">
-
-                    <!-- Sidebar Item 1 -->
                     <li class="flex items-center gap-3">
-                        <img src="./images/RDNA 4.webp" alt="GPU Benchmark" class="w-12 h-12 rounded object-cover" />
-                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">RDNA 4
-                            Architecture</a>
+                        <img src="./images/RDNA 4.webp" class="w-12 h-12 rounded object-cover" />
+                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">RDNA 4 Architecture</a>
                     </li>
-
-                    <!-- Sidebar Item 2 -->
                     <li class="flex items-center gap-3">
-                        <img src="./images/DLSS 4.jpg" alt="DLSS 4" class="w-12 h-12 rounded object-cover" />
-                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">Nvidia
-                            DLSS
-                            4.0 Explained</a>
+                        <img src="./images/DLSS 4.jpg" class="w-12 h-12 rounded object-cover" />
+                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">Nvidia DLSS 4.0 Explained</a>
                     </li>
-
-                    <!-- Sidebar Item 3 -->
                     <li class="flex items-center gap-3">
-                        <img src="./images/Intel.avif" alt="Intel" class="w-12 h-12 rounded object-cover" />
-                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">Intel’s
-                            New
-                            ARC
-                            GPUs</a>
+                        <img src="./images/Intel.avif" class="w-12 h-12 rounded object-cover" />
+                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">Intel’s New ARC GPUs</a>
                     </li>
-
-                    <!-- Sidebar Item 4 -->
                     <li class="flex items-center gap-3">
-                        <img src="./images/AMD vs Nvidia.jpg" alt="AMD vs Nvidia"
-                            class="w-12 h-12 rounded object-cover" />
-                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">AMD vs
-                            Nvidia in
-                            2025</a>
+                        <img src="./images/AMD vs Nvidia.jpg" class="w-12 h-12 rounded object-cover" />
+                        <a href="#" class="text-sm font-medium text-gray-800 hover:text-orange-400 transition">AMD vs Nvidia in 2025</a>
                     </li>
                 </ul>
             </aside>
 
-            <!-- YouTube Video-->
+            <!-- Video -->
             <aside class="bg-white p-4 rounded-lg shadow-md space-y-4">
                 <h3 class="text-lg font-bold text-orange-500">Featured Video</h3>
                 <div class="w-full h-[200px] rounded-lg overflow-hidden">
                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/qFv-JSf7fmE" title="YouTube video"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                        frameborder="0" allowfullscreen></iframe>
                 </div>
             </aside>
 
-            <!-- Image-->
+            <!-- Image Ad -->
             <aside class="bg-white p-4 rounded-lg shadow-md space-y-4">
-                <a href="#"
-                    class="block transform transition duration-300 hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden">
-                    <img src="./images/GPU Benchmark.jpg" alt="GPU Benchmark" class="w-full object-cover" />
+                <a href="#" class="block transform transition hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden">
+                    <img src="./images/GPU Benchmark.jpg" class="w-full object-cover" />
                 </a>
             </aside>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-white border-t mt-10">
         <div class="max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-gray-500 text-sm">&copy; 2025 FrameDrop. All rights reserved.</p>
-
-            <!-- Social Media Icons -->
             <div class="flex space-x-4">
-                <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-blue-500 transition">
-                    <i data-lucide="twitter" class="w-5 h-5"></i>
-                </a>
-                <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-blue-700 transition">
-                    <i data-lucide="facebook" class="w-5 h-5"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 transition">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </a>
-                <a href="https://youtube.com" target="_blank" class="text-gray-400 hover:text-red-500 transition">
-                    <i data-lucide="youtube" class="w-5 h-5"></i>
-                </a>
+                <a href="https://twitter.com" class="text-gray-400 hover:text-blue-500 transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="https://facebook.com" class="text-gray-400 hover:text-blue-700 transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="https://instagram.com" class="text-gray-400 hover:text-pink-500 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="https://youtube.com" class="text-gray-400 hover:text-red-500 transition"><i data-lucide="youtube" class="w-5 h-5"></i></a>
             </div>
         </div>
     </footer>
-</body>
 
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow hidden z-50"></div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
 </html>
+
+<!-- Article -->
+<!--  
+    <div class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-lg shadow-md">
+        <img src="./images/RX 9070 XT.webp" alt="9070" class="w-full md:w-48 h-auto object-cover rounded" />
+        <div>
+            <a href="#"
+                class="block text-xl font-semibold mb-2 text-gray-800 transition duration-300 ease-in-out hover:text-orange-500 hover:scale-[1.02] transform">
+                AMD’s RX 9070 XT $600 MSRP—But Only in the U.S.
+            </a>
+            <p class="text-gray-700">AMD's new GPU is priced at $600—but that sweet MSRP seems exclusive to the
+                U.S. Global buyers are seeing inflated prices with little explanation.</p>
+        </div>
+    </div> 
+-->

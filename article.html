@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Article Detail</title>
+    <link rel="stylesheet" href="tailwind-output.css" />
+</head>
+
+<body class="bg-gray-100 p-6">
+
+    <!-- Article container -->
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow space-y-4" id="articleContainer">
+        
+        <!-- Article title -->
+        <h1 id="title" class="text-2xl font-bold text-gray-800"></h1>
+
+        <!-- Article image -->
+        <img id="image" class="w-full h-auto object-cover rounded" alt="Article image">
+
+        <!-- Article date -->
+        <p id="date" class="text-sm text-gray-500"></p>
+
+        <!-- Article content -->
+        <p id="content" class="text-gray-700 mt-4"></p>
+
+        <!-- Like/Dislike buttons -->
+        <div class="flex items-center gap-4 mt-4">
+            <button id="likeBtn" class="text-green-600">👍 <span id="likes">0</span></button>
+            <button id="dislikeBtn" class="text-red-600">👎 <span id="dislikes">0</span></button>
+        </div>
+
+        <!-- Comments section -->
+        <div class="mt-6">
+            <h3 class="text-lg font-bold">Comments</h3>
+            
+            <!-- Comment input -->
+            <textarea id="commentInput" class="w-full p-2 border rounded mt-2" placeholder="Leave a comment..."></textarea>
+            
+            <!-- Post comment button -->
+            <button id="commentBtn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Post Comment</button>
+
+            <!-- Displayed comments -->
+            <ul id="comments" class="mt-4 space-y-2 text-gray-700"></ul>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script src="article.js"></script>
+    
+</body>
+</html>
